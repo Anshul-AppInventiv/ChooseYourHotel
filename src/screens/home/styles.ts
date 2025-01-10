@@ -146,17 +146,18 @@ export const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginVertical: 10,
     textAlign: 'center',
   },
   closeButton: {
     width: '70%',
-    padding: 12,
+    padding: vh(10),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'blue',
     borderRadius: 5,
     alignSelf: 'center',
+    marginBottom:vh(10),
   },
   closeText: {
     color: 'white',

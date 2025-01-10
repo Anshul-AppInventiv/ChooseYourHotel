@@ -10,12 +10,14 @@ import {
   Button,
   TouchableOpacity,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import MapView, {Marker, Polyline} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import {getDistance} from 'geolib';
-import { Icons } from '../../assets';
-import { vw } from '../../utils/dimension';
+import {Icons} from '../../assets';
+import {vw} from '../../utils/dimension';
+import { useNavigation } from '@react-navigation/native';
 
 const Maps = () => {
   const [location, setLocation] = useState(null);
@@ -23,6 +25,7 @@ const Maps = () => {
   const [source, setSource] = useState(null);
   const [isChoosingSource, setIsChoosingSource] = useState(false);
   const mapRef = useRef(null);
+  const navigation = useNavigation();
 
   const defaultLocation = {
     latitude: 37.78825,
@@ -113,19 +116,22 @@ const Maps = () => {
         longitude: marker.longitude,
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
-      });
+      }, 1000);
     }
+  };
+  const handleBackPress = () => {
+    navigation.goBack();
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton}>
-          <Image source={Icons.back} style={styles.Left} />
-        </TouchableOpacity>
+    <SafeAreaView style={styles.container}>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <>
+          <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
+            <Image source={Icons.back} style={styles.Left} />
+          </TouchableOpacity>
           <MapView
             ref={mapRef}
             style={styles.map}
@@ -160,24 +166,28 @@ const Maps = () => {
           </View>
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 export default Maps;
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   backButton: {
+    position: 'absolute',
+    top: 10,
+    left: 20,
     width: vw(40),
     height: vw(40),
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ccc',
+    backgroundColor: '#E7E7E7',
     borderRadius: 50,
+    zIndex: 1,
   },
   Left: {
     width: vw(24),
@@ -185,7 +195,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   buttonContainer: {
     position: 'absolute',

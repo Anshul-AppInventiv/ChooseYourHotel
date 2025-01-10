@@ -19,5 +19,12 @@ const Icons = {
   googleMaps: require('../assets/icons/google-maps.png'),
   close: require('../assets/icons/close.png'),
   location: require('../assets/icons/location.png'),
+  eye: require('../assets/icons/eye.png'),
+  eye_off: require('../assets/icons/eye-off.png'),
+  birthday: require('../assets/icons/birthday.png'),
+  lock: require('../assets/icons/accountPrivacy.png'),
+
+
+
 };
 export {Icons};
