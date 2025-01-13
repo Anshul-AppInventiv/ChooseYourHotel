@@ -126,6 +126,20 @@ const Login = ({navigation}: LoginProps) => {
                 onPress={handleNext}
                 isButtonDisabled={isButtonDisabled}
               />
+              <TouchableOpacity
+                style={styles.googleView}
+                activeOpacity={0.6}
+                onPress={() => {
+                  navigation.navigate('SignInGoogle');
+                }}>
+                <Image source={Icons.google} style={styles.google} />
+                <Text style={styles.googleText}>Sign in with Google</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.facebookView} activeOpacity={0.6}>
+                <Image source={Icons.facebook} style={styles.google} />
+                <Text style={styles.facebookText}>Sign in with Facebook</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.loginContainer}>
               <Text style={styles.accountText}>Don't have an account?</Text>

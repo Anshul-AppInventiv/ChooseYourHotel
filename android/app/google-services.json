@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1068304745157",
+    "project_id": "chooseyourhotel-d8b05",
+    "storage_bucket": "chooseyourhotel-d8b05.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068304745157:android:0c6e618ca13bc7bef666ac",
+        "android_client_info": {
+          "package_name": "com.chooseyourhotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068304745157-1d9n1o3auc8ths2alrh7bqe0q6qplc7k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chooseyourhotel",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1068304745157-fu2l57sjjfvqt45ms5s90iiq3kbus6l8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxVYfAESvO2_UlItcMEvi36BLyIkHIM7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068304745157-fu2l57sjjfvqt45ms5s90iiq3kbus6l8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1068304745157-oolaeb9fctufi3351ti5upnnom67jllu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.ChooseYourHotel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

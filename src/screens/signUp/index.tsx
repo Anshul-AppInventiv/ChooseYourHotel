@@ -11,7 +11,6 @@ import {
   TouchableWithoutFeedback,
   useColorScheme,
   ScrollView,
-  I18nManager,
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import React, {useState} from 'react';

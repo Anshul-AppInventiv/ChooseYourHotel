@@ -1,5 +1,3 @@
-
-
 const Icons = {
   telephone: require('../assets/icons/telephone.png'),
   back: require('../assets/icons/back.png'),
@@ -23,8 +21,7 @@ const Icons = {
   eye_off: require('../assets/icons/eye-off.png'),
   birthday: require('../assets/icons/birthday.png'),
   lock: require('../assets/icons/accountPrivacy.png'),
-
-
-
+  google: require('../assets/icons/google.png'),
+  facebook: require('../assets/icons/facebook.png'),
 };
 export {Icons};
