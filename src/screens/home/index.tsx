@@ -44,9 +44,6 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.subContainer}>
-        <TouchableOpacity style={styles.backButton}>
-          <Image source={Icons.back} style={styles.Left} />
-        </TouchableOpacity>
         <View style={styles.headingContainer}>
           <Text style={styles.headingText}>All rooms</Text>
         </View>
