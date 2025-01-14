@@ -136,7 +136,7 @@ const Login = ({navigation}: LoginProps) => {
                 <Text style={styles.googleText}>Sign in with Google</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.facebookView} activeOpacity={0.6}>
+              <TouchableOpacity style={styles.facebookView} activeOpacity={0.6} onPress={()=>{navigation.navigate('FaceBookLogin')}}>
                 <Image source={Icons.facebook} style={styles.google} />
                 <Text style={styles.facebookText}>Sign in with Facebook</Text>
               </TouchableOpacity>

@@ -7,7 +7,21 @@ PODS:
     - AppAuth/Core
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
+  - FBAEMKit (17.4.0):
+    - FBSDKCoreKit_Basics (= 17.4.0)
   - FBLazyVector (0.76.5)
+  - FBSDKCoreKit (17.4.0):
+    - FBAEMKit (= 17.4.0)
+    - FBSDKCoreKit_Basics (= 17.4.0)
+  - FBSDKCoreKit_Basics (17.4.0)
+  - FBSDKGamingServicesKit (17.4.0):
+    - FBSDKCoreKit (= 17.4.0)
+    - FBSDKCoreKit_Basics (= 17.4.0)
+    - FBSDKShareKit (= 17.4.0)
+  - FBSDKLoginKit (17.4.0):
+    - FBSDKCoreKit (= 17.4.0)
+  - FBSDKShareKit (17.4.0):
+    - FBSDKCoreKit (= 17.4.0)
   - Firebase/Auth (11.5.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 11.5.0)
@@ -1301,6 +1315,21 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-fbsdk-next (13.3.0):
+    - React-Core
+    - react-native-fbsdk-next/Core (= 13.3.0)
+    - react-native-fbsdk-next/Login (= 13.3.0)
+    - react-native-fbsdk-next/Share (= 13.3.0)
+  - react-native-fbsdk-next/Core (13.3.0):
+    - FBSDKCoreKit (~> 17.4)
+    - React-Core
+  - react-native-fbsdk-next/Login (13.3.0):
+    - FBSDKLoginKit (~> 17.4)
+    - React-Core
+  - react-native-fbsdk-next/Share (13.3.0):
+    - FBSDKGamingServicesKit (~> 17.4)
+    - FBSDKShareKit (~> 17.4)
+    - React-Core
   - react-native-geolocation (3.4.0):
     - DoubleConversion
     - glog
@@ -1839,6 +1868,49 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNSVG (15.11.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNSVG/common (= 15.11.1)
+    - Yoga
+  - RNSVG/common (15.11.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
@@ -1880,6 +1952,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-fbsdk-next (from `../node_modules/react-native-fbsdk-next`)
   - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -1920,11 +1993,18 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - AppAuth
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKGamingServicesKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -2011,6 +2091,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-fbsdk-next:
+    :path: "../node_modules/react-native-fbsdk-next"
   react-native-geolocation:
     :path: "../node_modules/@react-native-community/geolocation"
   react-native-image-picker:
@@ -2091,6 +2173,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-google-signin/google-signin"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -2098,7 +2182,13 @@ SPEC CHECKSUMS:
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
   DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
+  FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
   FBLazyVector: 1bf99bb46c6af9a2712592e707347315f23947aa
+  FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
+  FBSDKCoreKit_Basics: 151b43db8b834d3f0e02f95d36a44ffd36265e45
+  FBSDKGamingServicesKit: 55a13febe0cd117bf5f8f61f315d75aab9b7876e
+  FBSDKLoginKit: 5c1cd53c91a2282b3a4fe6e6d3dcf2b8b0d33d55
+  FBSDKShareKit: 00546a02dce72f37a4209cd68aaf5fb749185c3b
   Firebase: 7a56fe4f56b5ab81b86a6822f5b8f909ae6fc7e2
   FirebaseAppCheckInterop: 347aa09a805219a31249b58fc956888e9fcb314b
   FirebaseAuth: d8ad770642af39d1be932094be5f5230efb0ea74
@@ -2142,6 +2232,7 @@ SPEC CHECKSUMS:
   React-logger: 697873f06b8ba436e3cddf28018ab4741e8071b6
   React-Mapbuffer: c79216258c659d70cdebaf76f8c110cc46dce8db
   React-microtasksnativemodule: 8d918db5d7c4526de2a0a4692d878a21b338c3f0
+  react-native-fbsdk-next: b430fc002cf9b8675b8688d43fe6eddd5ff4e029
   react-native-geolocation: a2778ea7c815d1f8d3bccaa6fc386b66a55fb469
   react-native-image-picker: 8d06080ecb33269e77e0728f1fd8a16f2f5aad07
   react-native-maps: ee1e65647460c3d41e778071be5eda10e3da6225
@@ -2183,6 +2274,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 15ee1ab573a954c92641877ca946e2680f2e58da
   RNGoogleSignin: 27c2199f487ee08cc692d8d2c035bc9c154ddc22
   RNScreens: 8ae716a7e26b9ecee7f2856e6ff47b8e7e253ee8
+  RNSVG: 3cd6669b7ad658c8b482db630dccf364c3b59cfb
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 7548e4449365bf0ef60db4aefe58abff37fcabec
 

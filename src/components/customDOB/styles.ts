@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {vw, vh} from '../../utils/dimension';
 
-export const Styles = (theme: any) =>
+export const styles =
   StyleSheet.create({
     inputContainer: {
       flexDirection: 'row',
@@ -27,7 +27,7 @@ export const Styles = (theme: any) =>
       width: '82%',
       // width: '95%',
       fontSize: 15,
-      backgroundColor: theme === 'dark' ? '#000' : '#FFF',
+      backgroundColor: '#FFF',
       // backgroundColor:'red',
       // marginHorizontal: 8,
       overflow: 'hidden',
@@ -40,5 +40,10 @@ export const Styles = (theme: any) =>
       fontSize: 14,
       marginTop: vw(4),
       textAlign: 'left',
+    },
+    calendarImg: {
+      width: vw(22),
+      height: vw(22),
+      resizeMode: 'contain',
     },
   });

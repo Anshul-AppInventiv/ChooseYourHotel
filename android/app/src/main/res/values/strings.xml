@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ChooseYourHotel</string>
+<string name="facebook_app_id">4041705302777057</string>
+<string name="fb_login_protocol_scheme">fb1234</string>
+<string name="facebook_client_token">48910fb578dc4ca425e5d3bd29ab8d83</string>
 </resources>

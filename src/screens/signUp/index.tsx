@@ -12,7 +12,7 @@ import {
   useColorScheme,
   ScrollView,
 } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
+// import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import React, {useState} from 'react';
 import {Styles} from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -27,6 +27,7 @@ import {
   validatePassword,
 } from '../../utils/validations';
 import {Icons} from '../../assets';
+import DOBPicker from '../../components/customDOB';
 
 interface SignUpProps {
   onClose?: any;
@@ -54,8 +55,8 @@ const SignUp = ({navigation}: SignUpProps) => {
   const [emailError, setEmailError] = useState(false);
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
-  const [dob, setDob] = useState('');
-  const [datePickerVisible, setDatePickerVisible] = useState(false);
+  // const [dob, setDob] = useState('');
+  // const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -63,6 +64,12 @@ const SignUp = ({navigation}: SignUpProps) => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
+    const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+
+  // Handle date change
+  const handleDateChange = (date: Date | undefined) => {
+    setSelectedDate(date);
+  };
 
   const handlePasswordChange = (text: string) => {
     setPassword(text);
@@ -93,13 +100,13 @@ const SignUp = ({navigation}: SignUpProps) => {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
   };
 
-  const showDatePicker = () => setDatePickerVisible(true);
-  const hideDatePicker = () => setDatePickerVisible(false);
+  // const showDatePicker = () => setDatePickerVisible(true);
+  // const hideDatePicker = () => setDatePickerVisible(false);
 
-  const handleConfirmDate = (date: Date) => {
-    setDob(date.toISOString().split('T')[0]);
-    hideDatePicker();
-  };
+  // const handleConfirmDate = (date: Date) => {
+  //   setDob(date.toISOString().split('T')[0]);
+  //   hideDatePicker();
+  // };
 
   const onSelect = (country: any) => {
     setCountryCode(country.cca2);
@@ -204,7 +211,7 @@ const SignUp = ({navigation}: SignUpProps) => {
                   'Please use only alphabetical letters and minimum length is 3 characters.'
                 }
               />
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={styles.inputContainer}
                 activeOpacity={0.7}
                 onPress={showDatePicker}>
@@ -215,7 +222,13 @@ const SignUp = ({navigation}: SignUpProps) => {
                   {dob || `What is your date of birth?`}
                 </Text>
                 <Image source={Icons.calendar} style={styles.iconStyle} />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
+              <DOBPicker
+        label="Date of Birth"
+        Icon={Icons.birthday} // Your birthday icon
+        calendarIcon={Icons.calendar} // Your calendar icon
+        onDateChange={handleDateChange} // Callback for selected date
+      />
 
               <CustomInputBox
                 name={email}
@@ -273,12 +286,12 @@ const SignUp = ({navigation}: SignUpProps) => {
                 isButtonDisabled={isButtonDisabled}
               />
             </View>
-            <DateTimePickerModal
+            {/* <DateTimePickerModal
               isVisible={datePickerVisible}
               mode="date"
               onConfirm={handleConfirmDate}
               onCancel={hideDatePicker}
-            />
+            /> */}
             <View style={styles.loginContainer}>
               <Text style={styles.accountText}>Already have an account?</Text>
               <TouchableOpacity

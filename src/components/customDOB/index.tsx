@@ -1,68 +1,88 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   TouchableOpacity,
   Image,
-  Text,
   ImageSourcePropType,
-  useColorScheme,
 } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { Styles } from './styles';
+import {TextInput} from 'react-native-paper';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import {format, parse} from 'date-fns';
+import {styles} from './styles';
 
-interface DOBInputProps {
+interface DOBPickerProps {
   label: string;
   Icon: ImageSourcePropType;
-  Error?: boolean;
-  errorText?: string;
+  calendarIcon: ImageSourcePropType;
   onDateChange: (selectedDate: Date | undefined) => void;
-  maxLength?: number;
 }
 
-const DOBInput = ({
+const DOBPicker = ({
   label,
   Icon,
-  Error,
-  errorText,
+  calendarIcon,
   onDateChange,
-}: DOBInputProps) => {
-  const theme = useColorScheme();
-  const styles = Styles(theme);
-  const [date, setDate] = useState<Date | undefined>(undefined);
-  const [show, setShow] = useState(false);
+}: DOBPickerProps) => {
+  const [dob, setDob] = useState('');
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-  const onChange = (event: any, selectedDate?: Date) => {
-    setShow(false); // Close the picker after selection
-    const currentDate = selectedDate || date;
-    setDate(currentDate);
-    onDateChange(currentDate);
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
   };
 
-  const formattedDate = date
-    ? `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-    : '';
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirmDate = (date: Date) => {
+    const formattedDate = format(date, 'dd/MM/yyyy');
+    setDob(formattedDate);
+    onDateChange(date);
+    hideDatePicker();
+  };
+
+  const handleDateInput = (input: string) => {
+    setDob(input);
+
+    const parsedDate = parse(input, 'dd/MM/yyyy', new Date());
+    if (!isNaN(parsedDate.getTime())) {
+      onDateChange(parsedDate);
+    }
+  };
 
   return (
-    <>
-      <View
-        style={[styles.inputContainer, Error ? styles.errorContainer : null]}>
-        <TouchableOpacity activeOpacity={1} style={styles.iconButton} onPress={() => setShow(true)}>
+    <View style={styles.inputContainer}>
+        <TouchableOpacity activeOpacity={1} style={styles.iconButton}>
           <Image
             source={Icon}
-            style={[styles.iconStyle, { tintColor: Error ? 'red' : 'grey' }]}
+            style={[styles.iconStyle]}
           />
         </TouchableOpacity>
+
         <TextInput
-          style={[styles.phoneInput]} // Apply similar styling
+        style={styles.phoneInput}
           label={label}
-          value={formattedDate}
-          // editable={false} // Make the field not directly editable
-          textColor={theme === 'dark' ? '#FFF' : '#000'}
+          value={dob}
+          onChangeText={handleDateInput}
+          keyboardType="numeric"
+          mode="flat"
           underlineStyle={{
             display: 'none',
           }}
+          right={
+            <TextInput.Icon
+              icon={() => (
+                <TouchableOpacity onPress={showDatePicker}>
+                  <Image
+                    source={calendarIcon}
+                    style={styles.calendarImg}
+                  />
+                </TouchableOpacity>
+              )}
+            />
+          }
           theme={{
             colors: {
               primary: 'gray',
@@ -72,21 +92,16 @@ const DOBInput = ({
             },
           }}
         />
-      </View>
 
-      {Error && <Text style={styles.errorText}>{errorText}</Text>}
-
-      {show && (
-        <DateTimePicker
-          value={date || new Date()}
-          mode="date"
-          display="default"
-          maximumDate={new Date()} // Prevent future dates
-          onChange={onChange}
-        />
-      )}
-    </>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirmDate}
+        onCancel={hideDatePicker}
+        maximumDate={new Date()}
+      />
+    </View>
   );
 };
 
-export default DOBInput;
+export default DOBPicker;

@@ -13,7 +13,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({navigation}:any) => {
   console.log('Current Theme====>', theme);
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Login');
+      navigation.navigate('TutorialScreen');
     }, 2000);
 
     return () => clearTimeout(timer);
