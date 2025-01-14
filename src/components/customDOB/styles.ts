@@ -22,6 +22,7 @@ export const styles =
       width: vw(20),
       height: vw(20),
       resizeMode: 'contain',
+      tintColor:'grey',
     },
     phoneInput: {
       width: '82%',
@@ -45,5 +46,6 @@ export const styles =
       width: vw(22),
       height: vw(22),
       resizeMode: 'contain',
+      tintColor:'grey',
     },
   });

@@ -55,8 +55,6 @@ const SignUp = ({navigation}: SignUpProps) => {
   const [emailError, setEmailError] = useState(false);
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
-  // const [dob, setDob] = useState('');
-  // const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -64,9 +62,8 @@ const SignUp = ({navigation}: SignUpProps) => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
-    const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
 
-  // Handle date change
   const handleDateChange = (date: Date | undefined) => {
     setSelectedDate(date);
   };
@@ -99,14 +96,6 @@ const SignUp = ({navigation}: SignUpProps) => {
   const toggleConfirmPasswordVisibility = () => {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
   };
-
-  // const showDatePicker = () => setDatePickerVisible(true);
-  // const hideDatePicker = () => setDatePickerVisible(false);
-
-  // const handleConfirmDate = (date: Date) => {
-  //   setDob(date.toISOString().split('T')[0]);
-  //   hideDatePicker();
-  // };
 
   const onSelect = (country: any) => {
     setCountryCode(country.cca2);
@@ -196,7 +185,6 @@ const SignUp = ({navigation}: SignUpProps) => {
                   'Please use only alphabetical letters and minimum length is 3 characters.'
                 }
               />
-
               <CustomInputBox
                 name={lastName}
                 label={'Last Name'}
@@ -211,25 +199,12 @@ const SignUp = ({navigation}: SignUpProps) => {
                   'Please use only alphabetical letters and minimum length is 3 characters.'
                 }
               />
-              {/* <TouchableOpacity
-                style={styles.inputContainer}
-                activeOpacity={0.7}
-                onPress={showDatePicker}>
-                <TouchableOpacity activeOpacity={1} style={styles.iconButton}>
-                  <Image source={Icons.birthday} style={[styles.iconStyle]} />
-                </TouchableOpacity>
-                <Text style={styles.phoneInput}>
-                  {dob || `What is your date of birth?`}
-                </Text>
-                <Image source={Icons.calendar} style={styles.iconStyle} />
-              </TouchableOpacity> */}
               <DOBPicker
-        label="Date of Birth"
-        Icon={Icons.birthday} // Your birthday icon
-        calendarIcon={Icons.calendar} // Your calendar icon
-        onDateChange={handleDateChange} // Callback for selected date
-      />
-
+                label="Date of Birth"
+                Icon={Icons.birthday}
+                calendarIcon={Icons.calendar}
+                onDateChange={handleDateChange}
+              />
               <CustomInputBox
                 name={email}
                 label={'Email Address'}
@@ -286,12 +261,6 @@ const SignUp = ({navigation}: SignUpProps) => {
                 isButtonDisabled={isButtonDisabled}
               />
             </View>
-            {/* <DateTimePickerModal
-              isVisible={datePickerVisible}
-              mode="date"
-              onConfirm={handleConfirmDate}
-              onCancel={hideDatePicker}
-            /> */}
             <View style={styles.loginContainer}>
               <Text style={styles.accountText}>Already have an account?</Text>
               <TouchableOpacity

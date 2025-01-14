@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {vw, vh} from '../../utils/dimension';
 import {Colors} from '../../utils/colors';
 
@@ -11,6 +11,7 @@ export const Styles = (theme: any) =>
     subContainer: {
       paddingVertical: vh(25),
       paddingHorizontal: vw(20),
+      marginTop: Platform.OS === 'android' ? vh(40) : vh(5),
       // backgroundColor: 'red',
     },
     backButton: {

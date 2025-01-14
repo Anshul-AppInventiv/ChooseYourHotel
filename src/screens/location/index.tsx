@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   TextInput,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import {Icons} from '../../assets';
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: vh(10),
     paddingHorizontal: vw(15),
+    marginTop: Platform.OS === 'android' ? vh(40) : vh(5),
   },
   closeImg: {
     width: vw(22),

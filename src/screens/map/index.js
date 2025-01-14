@@ -14,9 +14,8 @@ import {
 } from 'react-native';
 import MapView, {Marker, Polyline} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import {getDistance} from 'geolib';
 import {Icons} from '../../assets';
-import {vw} from '../../utils/dimension';
+import {vh, vw} from '../../utils/dimension';
 import { useNavigation } from '@react-navigation/native';
 
 const Maps = () => {
@@ -188,6 +187,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E7E7E7',
     borderRadius: 50,
     zIndex: 1,
+    marginTop: Platform.OS === 'android' ? vh(40) : vh(5),
   },
   Left: {
     width: vw(24),
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    marginTop: Platform.OS === 'android' ? vh(40) : vh(5),
   },
   buttonContainer: {
     position: 'absolute',
@@ -210,6 +211,6 @@ const styles = StyleSheet.create({
   buttonGroup: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: vh(10),
   },
 });
