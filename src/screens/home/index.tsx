@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   Text,
   SafeAreaView,
@@ -83,7 +84,11 @@ const Home = () => {
               }}>
               <Image source={Icons.googleMaps} style={styles.mapsIcon} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.search} onPress={()=>{navigation.navigate('Hotel')}}>
+            <TouchableOpacity
+              style={styles.search}
+              onPress={() => {
+                navigation.navigate('Hotel');
+              }}>
               <Text style={styles.searchText}>Search</Text>
             </TouchableOpacity>
           </View>
@@ -132,8 +137,9 @@ const Home = () => {
                 pastScrollRange={0}
                 futureScrollRange={12}
                 scrollEnabled={true}
-                showScrollIndicator={true} // Show scroll bar
+                showScrollIndicator={true}
               />
+
               <TouchableOpacity
                 onPress={closeDatePicker}
                 style={styles.closeButton}>
